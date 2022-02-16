@@ -14,6 +14,14 @@ namespace stuartmillman.dissertation.goap
         public int StateCount => _state.Count;
 
         /// <summary>
+        /// Clear all the set state.
+        /// </summary>
+        public void Clear()
+        {
+            _state.Clear();
+        }
+
+        /// <summary>
         /// Set state.
         /// </summary>
         /// <param name="name">Name of the state</param>

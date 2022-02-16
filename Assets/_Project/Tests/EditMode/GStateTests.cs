@@ -6,7 +6,7 @@ namespace stuartmillman.dissertation.tests
     public class GStateTests
     {
         [Test]
-        public void Contains()
+        public void Has()
         {
             GState state = new GState();
 
@@ -76,6 +76,19 @@ namespace stuartmillman.dissertation.tests
 
             state.Remove("one");
             Assert.False(state.Has("one"));
+        }
+
+        [Test]
+        public void Clear()
+        {
+            GState state = new GState();
+
+            state.Set("one", 1);
+            state.Set("two", 2);
+            state.Set("three", 3);
+            state.Clear();
+
+            Assert.AreEqual(state.StateCount, 0);
         }
     }
 }
