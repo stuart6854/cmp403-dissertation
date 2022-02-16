@@ -11,6 +11,9 @@ namespace stuartmillman.dissertation.goap
     {
         private readonly Dictionary<string, object> _state = new Dictionary<string, object>();
 
+        /// <summary>
+        /// The number of stored state values.
+        /// </summary>
         public int StateCount => _state.Count;
 
         /// <summary>
