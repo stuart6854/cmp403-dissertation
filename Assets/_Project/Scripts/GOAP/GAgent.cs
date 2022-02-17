@@ -20,7 +20,7 @@ namespace stuartmillman.dissertation.goap
         }
 
         /// <summary>
-        /// 
+        /// Clears all the agents current state.
         /// </summary>
         public void ClearInitialState()
         {
@@ -28,7 +28,7 @@ namespace stuartmillman.dissertation.goap
         }
 
         /// <summary>
-        /// 
+        /// Add a state to the agents initial states.
         /// </summary>
         /// <param name="stateName"></param>
         /// <param name="value"></param>
@@ -38,7 +38,7 @@ namespace stuartmillman.dissertation.goap
         }
 
         /// <summary>
-        /// 
+        /// Clear all the agents goal states.
         /// </summary>
         public void ClearGoals()
         {
@@ -46,7 +46,7 @@ namespace stuartmillman.dissertation.goap
         }
 
         /// <summary>
-        /// 
+        /// Add a goal state to the agent.
         /// </summary>
         /// <param name="stateName"></param>
         /// <param name="value"></param>
@@ -56,7 +56,7 @@ namespace stuartmillman.dissertation.goap
         }
 
         /// <summary>
-        /// 
+        /// Request the agent to create a new action plan.
         /// </summary>
         public void Plan()
         {
