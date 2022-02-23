@@ -16,6 +16,17 @@ namespace stuartmillman.dissertation.goap
         /// </summary>
         public int StateCount => _state.Count;
 
+        public GState()
+        {
+        }
+
+        public GState(GState other)
+        {
+            _state = new Dictionary<string, object>(other._state);
+        }
+
+        public Dictionary<string, object> GetState() => _state;
+
         /// <summary>
         /// Clear all the set state.
         /// </summary>

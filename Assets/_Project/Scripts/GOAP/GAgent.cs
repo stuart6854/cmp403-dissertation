@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace stuartmillman.dissertation.goap
 {
+    [DisallowMultipleComponent]
     public class GAgent : MonoBehaviour
     {
         [SerializeField] private GActionList actionList;
@@ -12,7 +14,10 @@ namespace stuartmillman.dissertation.goap
 
         private GActionList _actionList;
 
-        private GAction[] _actionPlan;
+        private Queue<GAction> _actionPlan;
+        private GState _currentState;
+
+        public GState State => _currentState;
 
         private void Start()
         {
@@ -61,12 +66,13 @@ namespace stuartmillman.dissertation.goap
         public void Plan()
         {
             var newPlan = GPlanner.Plan(_actionList, _initialState, _goalState);
-            if (newPlan.Length == 0)
+            if (newPlan.Count == 0)
             {
                 // Failed to create plane
             }
 
             _actionPlan = newPlan;
+            _currentState = new GState(_initialState);
         }
     }
 }
