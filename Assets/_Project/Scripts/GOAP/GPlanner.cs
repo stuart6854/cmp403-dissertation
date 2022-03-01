@@ -32,7 +32,7 @@ namespace stuartmillman.dissertation.goap
             var endNodes = new List<GNode>();
 
             // Build list of possible actions
-            var start = new GNode(null, 0, null, null);
+            var start = new GNode(null, 0, initialState, null);
             var foundSolution = BuildGraph(start, endNodes, usableActions, goalState);
             if (!foundSolution)
             {
@@ -131,7 +131,7 @@ namespace stuartmillman.dissertation.goap
 
                 // Check that the values are the same
                 state.Get(stateToFind.Key, out var value);
-                if (stateToFind.Value != value)
+                if (!stateToFind.Value.Equals(value))
                 {
                     return false;
                 }
@@ -150,9 +150,16 @@ namespace stuartmillman.dissertation.goap
         {
             GState newState = new GState(baseState);
 
-            foreach (var stateToFind in baseState.GetState())
+            // Add base state
+            foreach (var state in baseState.GetState())
             {
-                newState.Set(stateToFind.Key, stateToFind.Value);
+                newState.Set(state.Key, state.Value);
+            }
+
+            // Add new state
+            foreach (var state in toAddState.GetState())
+            {
+                newState.Set(state.Key, state.Value);
             }
 
             return newState;
