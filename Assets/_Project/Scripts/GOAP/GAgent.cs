@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace stuartmillman.dissertation.goap
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     [DisallowMultipleComponent]
     public class GAgent : MonoBehaviour
     {
         [SerializeField] private GActionList actionList;
+
+        private NavMeshAgent _navAgent;
 
         private readonly GState _initialState = new GState();
         private readonly GState _goalState = new GState();
@@ -19,8 +23,10 @@ namespace stuartmillman.dissertation.goap
 
         public GState State => _currentState;
 
-        private void Start()
+        private void Awake()
         {
+            _navAgent = GetComponent<NavMeshAgent>();
+
             _actionList = actionList.Clone();
         }
 
@@ -60,19 +66,53 @@ namespace stuartmillman.dissertation.goap
             _goalState.Set(stateName, value);
         }
 
+        //TODO: Function to reset action list
+
+        public void AddAction(GAction action)
+        {
+            _actionList.Actions.Add(action);
+        }
+
         /// <summary>
         /// Request the agent to create a new action plan.
         /// </summary>
         public void Plan()
         {
             var newPlan = GPlanner.Plan(_actionList, _initialState, _goalState);
-            if (newPlan.Count == 0)
+            if (newPlan == null || newPlan.Count == 0)
             {
                 // Failed to create plane
+                Debug.LogError("[GAgent] Failed to create plan.", this);
+                return;
             }
 
             _actionPlan = newPlan;
             _currentState = new GState(_initialState);
+        }
+
+        private void Update()
+        {
+            // Run plan
+            if (_actionPlan != null && _actionPlan.Count > 0)
+            {
+                _actionPlan.Peek().Run(this);
+                // TODO: If action complete
+            }
+        }
+
+        public void MoveTo(Vector3 position)
+        {
+            _navAgent.destination = position;
+            _navAgent.isStopped = false;
+        }
+
+        public bool AtDestination()
+        {
+            if (_navAgent.pathPending) return false;
+            if (_navAgent.pathStatus == NavMeshPathStatus.PathComplete)
+                return true;
+
+            return false;
         }
     }
 }
