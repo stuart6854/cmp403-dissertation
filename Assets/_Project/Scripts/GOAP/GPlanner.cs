@@ -7,6 +7,8 @@ namespace stuartmillman.dissertation.goap
     /// <summary>
     /// Brains of the GOAP system.
     /// </summary>
+    ///
+    /// Future Work: Maybe define a threshold cost. Any plans less than this threshold are automatically returned to the agent.
     public class GPlanner
     {
         /// <summary>
@@ -18,6 +20,8 @@ namespace stuartmillman.dissertation.goap
         /// <returns>Array of GAction for agent to carry out</returns>
         public static Queue<GAction> Plan(GActionList actionList, GState initialState, GState goalState)
         {
+            float startTime = Time.realtimeSinceStartup;
+
             // TODO: Reset actions
 
             // Check what actions can run using their ProceduralConditions
@@ -60,6 +64,9 @@ namespace stuartmillman.dissertation.goap
                 node = node.parent;
             }
 
+            var time = Time.realtimeSinceStartup - startTime;
+            Debug.Log("[GPlanner] Plan complete: " + (time * 1000.0f) + "ms.");
+
             // Return action plan as queue
             var actionPlan = new Queue<GAction>(actionPlanList);
             return actionPlan;
@@ -80,6 +87,7 @@ namespace stuartmillman.dissertation.goap
             // Go through each available action at this node and see if we can use it here
             foreach (var action in usableActions)
             {
+                // TODO: log action
                 // If the parent state has the conditions for this actions preconditions,
                 // we can use it here
                 if (InState(parent.state, action.GetPreconditions()))
