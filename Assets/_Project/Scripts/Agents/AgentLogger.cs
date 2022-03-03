@@ -24,6 +24,7 @@ namespace stuartmillman.dissertation
         {
             _gAgent.ClearInitialState();
             _gAgent.ClearGoals();
+            _gAgent.ClearActions();
 
             _gAgent.AddInitialState("has_axe", true);
             

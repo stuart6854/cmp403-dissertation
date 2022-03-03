@@ -66,7 +66,10 @@ namespace stuartmillman.dissertation.goap
             _goalState.Set(stateName, value);
         }
 
-        //TODO: Function to reset action list
+        public void ClearActions()
+        {
+            _actionList.Actions.Clear();
+        }
 
         public void AddAction(GAction action)
         {
