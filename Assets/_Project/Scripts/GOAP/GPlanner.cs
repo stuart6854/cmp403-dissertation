@@ -182,11 +182,11 @@ namespace stuartmillman.dissertation.goap
     class GNode
     {
         public GNode parent;
-        public int runningCost;
+        public float runningCost;
         public GState state;
         public GAction action;
 
-        public GNode(GNode parent, int runningCost, GState state, GAction action)
+        public GNode(GNode parent, float runningCost, GState state, GAction action)
         {
             this.parent = parent;
             this.runningCost = runningCost;

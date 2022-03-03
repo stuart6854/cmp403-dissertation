@@ -7,7 +7,7 @@ namespace stuartmillman.dissertation.goap
     /// </summary>
     public abstract class GAction : ScriptableObject
     {
-        private int _cost = 0;
+        private float _cost = 0.0f;
         private readonly GState _preconditions = new GState();
         private readonly GState _effects = new GState();
 
@@ -15,13 +15,13 @@ namespace stuartmillman.dissertation.goap
         /// Get the action cost.
         /// </summary>
         /// <returns></returns>
-        public int GetCost() => _cost;
+        public float GetCost() => _cost;
 
         /// <summary>
         /// Set the action cost.
         /// </summary>
         /// <param name="cost"></param>
-        public void SetCost(int cost) => _cost = cost;
+        public void SetCost(float cost) => _cost = cost;
 
         /// <summary>
         /// Get the actions preconditions.
