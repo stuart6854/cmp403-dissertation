@@ -11,13 +11,15 @@ namespace stuartmillman.dissertation.goap
             AddEffect("hasMoveTarget_Vector", false);
         }
 
-        public override void Run(GAgent agent)
+        public override bool Run(GAgent agent)
         {
             if (agent.State.Get("moveTarget_Vector", out var value))
             {
                 var moveTarget = (Vector3) value;
                 // TODO: Move agent - Direct, Pathfind, etc.
             }
+
+            return false;
         }
     }
 }

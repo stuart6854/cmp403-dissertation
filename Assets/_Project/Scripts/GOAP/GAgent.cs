@@ -98,8 +98,16 @@ namespace stuartmillman.dissertation.goap
             // Run plan
             if (_actionPlan != null && _actionPlan.Count > 0)
             {
-                _actionPlan.Peek().Run(this);
-                // TODO: If action complete
+                if (_actionPlan.Peek().Run(this))
+                {
+                    _actionPlan.Dequeue();
+                }
+
+                if (_actionPlan.Count == 0)
+                {
+                    Debug.Log("[GAgent] Finished plan.");
+                    _actionPlan = null;
+                }
             }
         }
 

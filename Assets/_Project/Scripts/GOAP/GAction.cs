@@ -52,7 +52,7 @@ namespace stuartmillman.dissertation.goap
         /// <summary>
         /// Called by the AI agent to carry out this action.
         /// </summary>
-        public abstract void Run(GAgent agent);
+        public abstract bool Run(GAgent agent);
 
         /// <summary>
         /// Runs procedural checks to determine if this action can run.

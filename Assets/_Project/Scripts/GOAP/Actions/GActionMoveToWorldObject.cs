@@ -7,14 +7,10 @@ namespace stuartmillman.dissertation.goap
     {
         private WorldObject _object;
 
-        public GActionMoveToWorldObject()
+        public override bool Run(GAgent agent)
         {
-        }
-
-        public override void Run(GAgent agent)
-        {
-            // TODO: Move agent - Direct, Pathfind, etc.
             agent.MoveTo(_object.transform.position);
+            return agent.AtDestination();
         }
 
         public void SetObject(WorldObject obj)
