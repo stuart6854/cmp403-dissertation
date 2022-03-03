@@ -22,6 +22,7 @@ namespace stuartmillman.dissertation.goap
         private GState _currentState;
 
         public GState State => _currentState;
+        public bool HasPlan => _actionPlan != null && _actionPlan.Count > 0;
 
         private void Awake()
         {

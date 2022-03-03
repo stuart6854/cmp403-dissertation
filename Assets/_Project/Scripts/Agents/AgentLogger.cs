@@ -13,11 +13,13 @@ namespace stuartmillman.dissertation
             _gAgent = GetComponent<GAgent>();
         }
 
-        private void Start()
+        private void Update()
         {
-            PrepareToPlan();
-
-            _gAgent.Plan();
+            if (!_gAgent.HasPlan)
+            {
+                PrepareToPlan();
+                _gAgent.Plan();
+            }
         }
 
         private void PrepareToPlan()
@@ -27,7 +29,7 @@ namespace stuartmillman.dissertation
             _gAgent.ClearActions();
 
             _gAgent.AddInitialState("has_axe", true);
-            
+
             _gAgent.AddGoal("wood_logs", 5);
 
             var trees = FindObjectsOfType<Tree>();
@@ -35,13 +37,12 @@ namespace stuartmillman.dissertation
             {
                 var moveAction = ScriptableObject.CreateInstance<GActionMoveToWorldObject>();
                 moveAction.SetObject(tree);
+                moveAction.SetCost(Vector3.Distance(transform.position, tree.transform.position));
                 _gAgent.AddAction(moveAction);
 
                 var chopAction = ScriptableObject.CreateInstance<GActionChopTree>();
                 chopAction.SetTree(tree);
                 _gAgent.AddAction(chopAction);
-
-                Debug.Log("tree");
             }
         }
     }
