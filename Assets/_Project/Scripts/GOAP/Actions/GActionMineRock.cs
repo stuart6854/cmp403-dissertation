@@ -13,7 +13,7 @@ namespace stuartmillman.dissertation.goap
             AddEffect("stones", 5);
         }
 
-        public override bool Run(GAgent agent)
+        protected override bool Run_Internal(GAgent agent)
         {
             if (!_rock.IsInteracting)
             {
@@ -34,7 +34,8 @@ namespace stuartmillman.dissertation.goap
         {
             _rock = rock;
             SetCost(_rock.TimeToMine);
-            AddPrecondition("at_object", _rock);
+
+            SetTargetLocation(_rock.transform.position);
         }
     }
 }

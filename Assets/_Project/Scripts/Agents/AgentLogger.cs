@@ -35,11 +35,6 @@ namespace stuartmillman.dissertation
             var trees = FindObjectsOfType<Tree>();
             foreach (var tree in trees)
             {
-                var moveAction = ScriptableObject.CreateInstance<GActionMoveToWorldObject>();
-                moveAction.SetObject(tree);
-                moveAction.SetCost(Vector3.Distance(transform.position, tree.transform.position));
-                _gAgent.AddAction(moveAction);
-
                 var chopAction = ScriptableObject.CreateInstance<GActionChopTree>();
                 chopAction.SetTree(tree);
                 _gAgent.AddAction(chopAction);

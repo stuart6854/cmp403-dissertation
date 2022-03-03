@@ -35,11 +35,6 @@ namespace stuartmillman.dissertation
             var rocks = FindObjectsOfType<Rock>();
             foreach (var rock in rocks)
             {
-                var moveAction = ScriptableObject.CreateInstance<GActionMoveToWorldObject>();
-                moveAction.SetObject(rock);
-                moveAction.SetCost(Vector3.Distance(transform.position, rock.transform.position));
-                _gAgent.AddAction(moveAction);
-
                 var mineAction = ScriptableObject.CreateInstance<GActionMineRock>();
                 mineAction.SetRock(rock);
                 _gAgent.AddAction(mineAction);

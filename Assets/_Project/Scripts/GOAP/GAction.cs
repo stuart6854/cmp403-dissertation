@@ -11,6 +11,11 @@ namespace stuartmillman.dissertation.goap
         private readonly GState _preconditions = new GState();
         private readonly GState _effects = new GState();
 
+        private Vector3 _targetLocation;
+        private bool _requireAtTargetLocation;
+
+        private bool _firstRun = true;
+
         /// <summary>
         /// Get the action cost.
         /// </summary>
@@ -49,10 +54,38 @@ namespace stuartmillman.dissertation.goap
         /// <param name="value">State value to be stored</param>
         public void AddEffect(string stateName, object value) => _effects.Set(stateName, value);
 
+        public void SetTargetLocation(Vector3 location)
+        {
+            _requireAtTargetLocation = true;
+            _targetLocation = location;
+        }
+
         /// <summary>
         /// Called by the AI agent to carry out this action.
         /// </summary>
-        public abstract bool Run(GAgent agent);
+        public bool Run(GAgent agent)
+        {
+            if (_firstRun)
+            {
+                if (_requireAtTargetLocation)
+                {
+                    agent.MoveTo(_targetLocation);
+                }
+
+                _firstRun = false;
+                return false;
+            }
+
+            if (_requireAtTargetLocation && !agent.AtDestination())
+            {
+                agent.MoveTo(_targetLocation);
+                return false;
+            }
+
+            return Run_Internal(agent);
+        }
+
+        protected abstract bool Run_Internal(GAgent agent);
 
         /// <summary>
         /// Runs procedural checks to determine if this action can run.

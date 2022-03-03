@@ -12,7 +12,7 @@ namespace stuartmillman.dissertation.goap
             AddEffect("axe", 1);
         }
 
-        public override bool Run(GAgent agent)
+        protected override bool Run_Internal(GAgent agent)
         {
             return false;
         }

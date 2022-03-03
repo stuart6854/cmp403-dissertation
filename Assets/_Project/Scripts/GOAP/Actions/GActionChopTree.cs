@@ -13,7 +13,7 @@ namespace stuartmillman.dissertation.goap
             AddEffect("wood_logs", 5);
         }
 
-        public override bool Run(GAgent agent)
+        protected override bool Run_Internal(GAgent agent)
         {
             if (!_tree.IsInteracting)
             {
@@ -34,7 +34,8 @@ namespace stuartmillman.dissertation.goap
         {
             _tree = tree;
             SetCost(_tree.TimeToChop);
-            AddPrecondition("at_object", _tree);
+
+            SetTargetLocation(_tree.transform.position);
         }
     }
 }
