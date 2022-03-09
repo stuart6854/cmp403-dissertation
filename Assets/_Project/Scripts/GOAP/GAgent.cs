@@ -6,12 +6,14 @@ using UnityEngine.AI;
 namespace stuartmillman.dissertation.goap
 {
     [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(Inventory))]
     [DisallowMultipleComponent]
     public class GAgent : MonoBehaviour
     {
         [SerializeField] private GActionList actionList;
 
         private NavMeshAgent _navAgent;
+        private Inventory _inventory;
 
         private readonly GState _initialState = new GState();
         private readonly GState _goalState = new GState();
@@ -21,14 +23,21 @@ namespace stuartmillman.dissertation.goap
         private Queue<GAction> _actionPlan;
         private GState _currentState;
 
+        public Inventory Inventory => _inventory;
+
         public GState State => _currentState;
         public bool HasPlan => _actionPlan != null && _actionPlan.Count > 0;
+
+        private string _agentName;
 
         private void Awake()
         {
             _navAgent = GetComponent<NavMeshAgent>();
+            _inventory = GetComponent<Inventory>();
 
             _actionList = actionList.Clone();
+
+            _agentName = this.gameObject.name;
         }
 
         /// <summary>
@@ -37,6 +46,8 @@ namespace stuartmillman.dissertation.goap
         public void ClearInitialState()
         {
             _initialState.Clear();
+
+            _initialState.Set("inventory_empty", _inventory.GetTotalAmount() == 0);
         }
 
         /// <summary>
@@ -99,7 +110,10 @@ namespace stuartmillman.dissertation.goap
             // Run plan
             if (_actionPlan != null && _actionPlan.Count > 0)
             {
-                if (_actionPlan.Peek().Run(this))
+                var currentAction = _actionPlan.Peek();
+
+                this.gameObject.name = _agentName + " [" + currentAction.name + "]";
+                if (currentAction.Run(this))
                 {
                     _actionPlan.Dequeue();
                 }

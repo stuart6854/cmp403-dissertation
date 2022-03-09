@@ -23,6 +23,7 @@ namespace stuartmillman.dissertation.goap
             {
                 if (_tree.IsInteractionComplete)
                 {
+                    agent.Inventory.Add("wood_logs", 5);
                     return true;
                 }
             }
@@ -30,12 +31,17 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public void SetTree(Tree tree)
+        public override bool CheckProceduralRequirements()
         {
-            _tree = tree;
+            var trees = FindObjectsOfType<Tree>();
+            if (trees == null || trees.Length == 0)
+                return false;
+
+            _tree = trees[0];
             SetCost(_tree.TimeToChop);
 
             SetTargetLocation(_tree.transform.position);
+            return true;
         }
     }
 }

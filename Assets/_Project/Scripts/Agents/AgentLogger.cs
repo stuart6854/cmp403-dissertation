@@ -26,19 +26,11 @@ namespace stuartmillman.dissertation
         {
             _gAgent.ClearInitialState();
             _gAgent.ClearGoals();
-            _gAgent.ClearActions();
+            // _gAgent.ClearActions();
 
             _gAgent.AddInitialState("has_axe", true);
 
             _gAgent.AddGoal("wood_logs", 5);
-
-            var trees = FindObjectsOfType<Tree>();
-            foreach (var tree in trees)
-            {
-                var chopAction = ScriptableObject.CreateInstance<GActionChopTree>();
-                chopAction.SetTree(tree);
-                _gAgent.AddAction(chopAction);
-            }
         }
     }
 }

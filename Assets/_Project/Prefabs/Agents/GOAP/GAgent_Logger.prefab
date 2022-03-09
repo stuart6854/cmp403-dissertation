@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 2426647867793902126}
   - component: {fileID: 2426647867793902120}
   - component: {fileID: 2426647867793902127}
+  - component: {fileID: 518051164624422809}
   m_Layer: 0
   m_Name: GAgent_Logger
   m_TagString: Untagged
@@ -175,5 +176,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa000898d7179e04f9a775764d3a66bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &518051164624422809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426647867793902122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2556d71865a0d644d816d6bba8d645e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

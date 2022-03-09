@@ -23,6 +23,7 @@ namespace stuartmillman.dissertation.goap
             {
                 if (_rock.IsInteractionComplete)
                 {
+                    agent.Inventory.Add("stones", 5);
                     return true;
                 }
             }
@@ -30,12 +31,19 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public void SetRock(Rock rock)
+        public override bool CheckProceduralRequirements()
         {
-            _rock = rock;
+            var rocks = FindObjectsOfType<Rock>();
+            if (rocks == null || rocks.Length == 0)
+                return false;
+
+            // TODO: Find the nearest rock
+            _rock = rocks[0];
             SetCost(_rock.TimeToMine);
 
             SetTargetLocation(_rock.transform.position);
+
+            return true;
         }
     }
 }

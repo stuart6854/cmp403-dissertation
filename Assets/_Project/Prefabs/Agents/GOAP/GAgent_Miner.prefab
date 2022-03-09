@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9059866815868525877}
   - component: {fileID: 9059866815868525875}
   - component: {fileID: 1858022690663890790}
+  - component: {fileID: 5112640998527384828}
   m_Layer: 0
   m_Name: GAgent_Miner
   m_TagString: Untagged
@@ -79,6 +80,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64880479dcb78db44a10912dc8786266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5112640998527384828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9059866815868525873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2556d71865a0d644d816d6bba8d645e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9059866816086559754

@@ -1,0 +1,48 @@
+﻿using UnityEngine;
+
+namespace stuartmillman.dissertation.goap
+{
+    [CreateAssetMenu(menuName = "GOAP/Actions/Empty Inventory")]
+    public class GActionEmptyInventory : GAction
+    {
+        private Storage _storage;
+
+        public GActionEmptyInventory()
+        {
+            AddPrecondition("inventory_empty", false);
+            AddEffect("inventory_empty", true);
+        }
+
+        protected override bool Run_Internal(GAgent agent)
+        {
+            if (!_storage.IsInteracting)
+            {
+                _storage.Interact();
+            }
+            else
+            {
+                if (_storage.IsInteractionComplete)
+                {
+                    // TODO: Move agent inventory to storage
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public override bool CheckProceduralRequirements()
+        {
+            var storages = FindObjectsOfType<Storage>();
+            if (storages == null || storages.Length == 0)
+                return false;
+
+            // TODO: Find nearest storage
+            _storage = storages[0];
+
+            SetTargetLocation(_storage.transform.position);
+
+            return true;
+        }
+    }
+}

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c99fc7e68a1a42d783e294b781f89f0f, type: 3}
-  m_Name: MoveToTransform
+  m_Script: {fileID: 11500000, guid: e33d371d29d74be6a0533e5b07f3807e, type: 3}
+  m_Name: EmptyInventory
   m_EditorClassIdentifier: 

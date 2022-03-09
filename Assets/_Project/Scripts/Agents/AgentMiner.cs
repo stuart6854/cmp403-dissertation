@@ -26,19 +26,11 @@ namespace stuartmillman.dissertation
         {
             _gAgent.ClearInitialState();
             _gAgent.ClearGoals();
-            _gAgent.ClearActions();
+            // _gAgent.ClearActions();
 
             _gAgent.AddInitialState("has_pickaxe", true);
 
             _gAgent.AddGoal("stones", 5);
-
-            var rocks = FindObjectsOfType<Rock>();
-            foreach (var rock in rocks)
-            {
-                var mineAction = ScriptableObject.CreateInstance<GActionMineRock>();
-                mineAction.SetRock(rock);
-                _gAgent.AddAction(mineAction);
-            }
         }
     }
 }
