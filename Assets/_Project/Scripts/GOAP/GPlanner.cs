@@ -28,6 +28,10 @@ namespace stuartmillman.dissertation.goap
             var usableActions = new List<GAction>();
             foreach (var action in actionList.Actions)
             {
+                // Reset action
+                action.Reset();
+
+                action.PrepareForPlanning();
                 if (action.CheckProceduralRequirements())
                     usableActions.Add(action);
             }

@@ -7,10 +7,14 @@ namespace stuartmillman.dissertation.goap
     {
         private Tree _tree;
 
-        public GActionChopTree()
+        public override void PrepareForPlanning()
         {
+            _tree = null;
+
             AddPrecondition("has_axe", true);
             AddEffect("wood_logs", 5);
+
+            SetCost(5.0f);
         }
 
         protected override bool Run_Internal(GAgent agent)

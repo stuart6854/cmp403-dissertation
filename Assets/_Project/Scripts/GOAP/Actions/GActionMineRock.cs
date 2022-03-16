@@ -7,10 +7,14 @@ namespace stuartmillman.dissertation.goap
     {
         private Rock _rock;
 
-        public GActionMineRock()
+        public override void PrepareForPlanning()
         {
+            _rock = null;
+
             AddPrecondition("has_pickaxe", true);
             AddEffect("stones", 5);
+
+            SetCost(5.0f);
         }
 
         protected override bool Run_Internal(GAgent agent)

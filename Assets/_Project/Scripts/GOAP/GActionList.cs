@@ -11,6 +11,17 @@ namespace stuartmillman.dissertation.goap
         public List<GAction> Actions => actions;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void ResetActions()
+        {
+            foreach (var action in actions)
+            {
+                action.Reset();
+            }
+        }
+        
+        /// <summary>
         /// Clones this GActionList and all its GActions.
         /// </summary>
         /// <returns></returns>

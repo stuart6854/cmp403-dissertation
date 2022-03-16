@@ -41,6 +41,18 @@ namespace stuartmillman.dissertation.goap
         public GState GetEffects() => _effects;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void Reset()
+        {
+            _firstRun = true;
+            _requireAtTargetLocation = false;
+
+            _preconditions.Clear();
+            _effects.Clear();
+        }
+
+        /// <summary>
         /// Adds a precondition.
         /// </summary>
         /// <param name="stateName">Name of the state</param>
@@ -58,6 +70,14 @@ namespace stuartmillman.dissertation.goap
         {
             _requireAtTargetLocation = true;
             _targetLocation = location;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void PrepareForPlanning()
+        {
+            Reset();
         }
 
         /// <summary>

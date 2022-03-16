@@ -7,10 +7,14 @@ namespace stuartmillman.dissertation.goap
     {
         private Storage _storage;
 
-        public GActionEmptyInventory()
+        public override void PrepareForPlanning()
         {
+            _storage = null;
+
             AddPrecondition("inventory_empty", false);
             AddEffect("inventory_empty", true);
+
+            SetCost(1.0f);
         }
 
         protected override bool Run_Internal(GAgent agent)
@@ -23,7 +27,7 @@ namespace stuartmillman.dissertation.goap
             {
                 if (_storage.IsInteractionComplete)
                 {
-                    // TODO: Move agent inventory to storage
+                    // TODO: Move agents inventory to storage
                     return true;
                 }
             }
