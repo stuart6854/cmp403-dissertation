@@ -97,7 +97,7 @@ namespace stuartmillman.dissertation.goap
             if (newPlan == null || newPlan.Count == 0)
             {
                 // Failed to create plane
-                Debug.LogError("[GAgent] Failed to create plan.", this);
+                Debug.LogWarning("[GAgent] Failed to create plan.", this);
                 return;
             }
 

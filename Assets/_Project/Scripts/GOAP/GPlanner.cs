@@ -44,7 +44,7 @@ namespace stuartmillman.dissertation.goap
             var foundSolution = BuildGraph(start, endNodes, usableActions, goalState);
             if (!foundSolution)
             {
-                Debug.Log("[GPlanner] No plan.");
+                // Debug.Log("[GPlanner] No plan.");
                 return null;
             }
 
