@@ -135,6 +135,7 @@ namespace stuartmillman.dissertation.goap
         public bool AtDestination()
         {
             if (_navAgent.pathPending) return false;
+            if (_navAgent.remainingDistance >= _navAgent.stoppingDistance) return false;
             if (_navAgent.pathStatus == NavMeshPathStatus.PathComplete)
                 return true;
 
