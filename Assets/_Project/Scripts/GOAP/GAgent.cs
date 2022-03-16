@@ -121,6 +121,7 @@ namespace stuartmillman.dissertation.goap
                 if (_actionPlan.Count == 0)
                 {
                     Debug.Log("[GAgent] Finished plan.");
+                    this.gameObject.name = _agentName + " []";
                     _actionPlan = null;
                 }
             }
