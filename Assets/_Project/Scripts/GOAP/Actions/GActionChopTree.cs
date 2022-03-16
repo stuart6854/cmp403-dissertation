@@ -12,7 +12,7 @@ namespace stuartmillman.dissertation.goap
             _tree = null;
 
             AddPrecondition("has_axe", true);
-            AddEffect("wood_logs", 5);
+            AddEffect("has_wood", true);
 
             SetCost(5.0f);
         }
