@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace stuartmillman.dissertation
@@ -18,6 +19,11 @@ namespace stuartmillman.dissertation
             return amount;
         }
 
+        public void Clear()
+        {
+            _inventory.Clear();
+        }
+
         public bool Has(string itemName)
         {
             return _inventory.ContainsKey(itemName);
@@ -26,6 +32,11 @@ namespace stuartmillman.dissertation
         public int GetAmount(string itemName)
         {
             return !Has(itemName) ? 0 : _inventory[itemName];
+        }
+
+        public string[] GetItems()
+        {
+            return _inventory.Keys.ToArray();
         }
 
         public void Add(string itemName, int itemAmount)

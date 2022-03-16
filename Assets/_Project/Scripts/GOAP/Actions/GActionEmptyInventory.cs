@@ -27,7 +27,13 @@ namespace stuartmillman.dissertation.goap
             {
                 if (_storage.IsInteractionComplete)
                 {
-                    // TODO: Move agents inventory to storage
+                    foreach (var item in agent.Inventory.GetItems())
+                    {
+                        _storage.AddToStorage(item, agent.Inventory.GetAmount(item));
+                    }
+
+                    agent.Inventory.Clear();
+
                     return true;
                 }
             }

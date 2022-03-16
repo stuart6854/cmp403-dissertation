@@ -30,7 +30,14 @@ namespace stuartmillman.dissertation
 
             _gAgent.AddInitialState("has_axe", true);
 
-            _gAgent.AddGoal("wood_logs", 5);
+            if (_gAgent.Inventory.GetTotalAmount() == 0)
+            {
+                _gAgent.AddGoal("has_wood", true);
+            }
+            else
+            {
+                _gAgent.AddGoal("inventory_empty", true);
+            }
         }
     }
 }

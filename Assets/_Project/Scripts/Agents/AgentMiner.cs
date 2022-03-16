@@ -30,7 +30,14 @@ namespace stuartmillman.dissertation
 
             _gAgent.AddInitialState("has_pickaxe", true);
 
-            _gAgent.AddGoal("stones", 5);
+            if (_gAgent.Inventory.GetTotalAmount() == 0)
+            {
+                _gAgent.AddGoal("stones", 5);
+            }
+            else
+            {
+                _gAgent.AddGoal("inventory_empty", true);
+            }
         }
     }
 }

@@ -9,6 +9,9 @@ namespace stuartmillman.dissertation
 
         public override bool Interact()
         {
+            IsInteracting = true;
+            IsInteractionComplete = true;
+
             return true;
         }
 
