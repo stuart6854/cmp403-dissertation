@@ -21,6 +21,14 @@ namespace stuartmillman.dissertation
             return _items.ContainsKey(name);
         }
 
+        public int QueryAmount(string name)
+        {
+            if (!HasInStorage(name))
+                return -1;
+
+            return _items[name];
+        }
+
         public void AddToStorage(string name, int amount)
         {
             if (_items.ContainsKey(name))
