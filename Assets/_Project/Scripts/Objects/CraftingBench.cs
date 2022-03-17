@@ -18,7 +18,6 @@ namespace stuartmillman.dissertation
                 {
                     IsInteractionComplete = true;
                     _interactTime = 0.0f;
-                    IsInteracting = false;
                 }
             }
         }

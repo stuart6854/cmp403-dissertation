@@ -17,6 +17,12 @@ namespace stuartmillman.dissertation
             return false;
         }
 
+        public void ResetInteraction()
+        {
+            IsInteracting = false;
+            IsInteractionComplete = false;
+        }
+
         /// <summary>
         /// 
         /// </summary>

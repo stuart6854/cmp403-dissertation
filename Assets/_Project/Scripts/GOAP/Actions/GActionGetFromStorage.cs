@@ -29,6 +29,8 @@ namespace stuartmillman.dissertation.goap
             {
                 if (_storage.IsInteractionComplete)
                 {
+                    _storage.ResetInteraction();
+
                     // TODO: Make sure can remove from inventory
                     _storage.RemoveFromStorage(_itemName, _itemAmount);
                     agent.Inventory.Add(_itemName, _itemAmount);

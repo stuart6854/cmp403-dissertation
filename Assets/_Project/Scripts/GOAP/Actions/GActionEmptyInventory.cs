@@ -27,6 +27,8 @@ namespace stuartmillman.dissertation.goap
             {
                 if (_storage.IsInteractionComplete)
                 {
+                    _storage.ResetInteraction();
+
                     foreach (var item in agent.Inventory.GetItems())
                     {
                         _storage.AddToStorage(item, agent.Inventory.GetAmount(item));
