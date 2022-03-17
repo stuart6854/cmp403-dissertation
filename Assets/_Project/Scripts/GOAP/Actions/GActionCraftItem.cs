@@ -37,8 +37,9 @@ namespace stuartmillman.dissertation.goap
             {
                 if (_craftingBench.IsInteractionComplete)
                 {
-                    agent.Inventory.Add("wood_chair", 1);
                     _craftingBench.ResetInteraction();
+
+                    agent.Inventory.Add(_itemName, _itemAmount);
                     return true;
                 }
             }
