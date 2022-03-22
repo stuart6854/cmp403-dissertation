@@ -14,7 +14,6 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
-            Debug.Log("Inventory has items?");
             return agent.Inventory.GetTotalAmount() > 0 ? NodeState.Success : NodeState.Failure;
         }
     }

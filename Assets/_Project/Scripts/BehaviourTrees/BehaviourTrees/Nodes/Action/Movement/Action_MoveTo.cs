@@ -5,14 +5,10 @@ namespace stuartmillman.dissertation.bt
     public class Action_MoveTo : ActionNode
     {
         private readonly string targetVariableName;
-        private readonly float moveSpeed;
-        private readonly float stoppingDistance;
 
-        public Action_MoveTo(string targetVariableName, float moveSpeed, float stoppingDistance)
+        public Action_MoveTo(string targetVariableName)
         {
             this.targetVariableName = targetVariableName;
-            this.moveSpeed = moveSpeed;
-            this.stoppingDistance = stoppingDistance;
         }
 
         protected override void OnStart(BTAgent agent, Blackboard blackboard)

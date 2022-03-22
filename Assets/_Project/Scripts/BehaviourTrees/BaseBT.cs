@@ -30,6 +30,14 @@ namespace stuartmillman.dissertation.bt
                         .AddChild(new ConditionalJobNode("agentJob", Job.Miner))
                         .AddChild(new SubTreeNode(new MinerSubTree(moveSpeed, stoppingDist)))
                     )
+                    .AddChild(new SequencerNode()
+                        .AddChild(new ConditionalJobNode("agentJob", Job.Crafter))
+                        .AddChild(new SubTreeNode(new CrafterSubTree(moveSpeed, stoppingDist)))
+                    )
+                    .AddChild(new SequencerNode()
+                        .AddChild(new ConditionalJobNode("agentJob", Job.Farmer))
+                        .AddChild(new SubTreeNode(new FarmerSubTree(moveSpeed, stoppingDist)))
+                    )
             );
 
 

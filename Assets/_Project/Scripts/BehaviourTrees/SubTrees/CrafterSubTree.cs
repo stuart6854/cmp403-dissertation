@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace stuartmillman.dissertation.bt
 {
-    public class LoggerSubTree : SubTree
+    public class CrafterSubTree : SubTree
     {
         private readonly float moveSpeed;
         private readonly float stoppingDist;
 
-        public LoggerSubTree(float moveSpeed, float stoppingDist)
+        public CrafterSubTree(float moveSpeed, float stoppingDist)
         {
             this.moveSpeed = moveSpeed;
             this.stoppingDist = stoppingDist;
@@ -36,9 +36,22 @@ namespace stuartmillman.dissertation.bt
                     )
                     .AddChild(new Action_EmptyInventoryIntoStorage("targetObject"))
                 )
-                // Find and chop a tree
+                // Craft item
                 .AddChild(new SequencerNode()
-                    .AddChild(new Action_FindGameObjectsWithComponent<Tree>("foundObjects"))
+                    // Get crafting requirements
+                    .AddChild(new Action_FindStorageWithItem("targetObject", "wood_logs", 5))
+                    // .AddChild(new Action_FindGameObjectsWithComponent<CraftingBench>("foundObjects"))
+                    // .AddChild(new InverterNode(new ListIsEmptyNode("foundObjects")))
+                    // .AddChild(new SortGameObjectListByDistNode("foundObjects", "foundObjects"))
+                    // .AddChild(new PickListElementNode("foundObjects", 0, "targetObject"))
+                    .AddChild(new SequencerNode()
+                        .AddChild(new InverterNode(new CheckNullNode("targetObject")))
+                        .AddChild(new Action_MoveTo("targetObject"))
+                    )
+                    .AddChild(new Action_StorageTakeItem("targetObject", "wood_logs", 5))
+                    // .AddChild(new Action_InventoryHasItem("wood_logs", 5))
+                    // Craft
+                    .AddChild(new Action_FindGameObjectsWithComponent<CraftingBench>("foundObjects"))
                     .AddChild(new InverterNode(new ListIsEmptyNode("foundObjects")))
                     .AddChild(new SortGameObjectListByDistNode("foundObjects", "foundObjects"))
                     .AddChild(new PickListElementNode("foundObjects", 0, "targetObject"))
@@ -46,7 +59,7 @@ namespace stuartmillman.dissertation.bt
                         .AddChild(new InverterNode(new CheckNullNode("targetObject")))
                         .AddChild(new Action_MoveTo("targetObject"))
                     )
-                    .AddChild(new Action_ChopTree("targetObject"))
+                    .AddChild(new Action_CraftItem("targetObject", "wood_chair", 1, new[] {"wood_logs"}, new[] {5}))
                 )
             );
             return repeat;

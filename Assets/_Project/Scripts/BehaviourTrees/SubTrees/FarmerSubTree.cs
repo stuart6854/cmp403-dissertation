@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace stuartmillman.dissertation.bt
 {
-    public class LoggerSubTree : SubTree
+    public class FarmerSubTree : SubTree
     {
         private readonly float moveSpeed;
         private readonly float stoppingDist;
 
-        public LoggerSubTree(float moveSpeed, float stoppingDist)
+        public FarmerSubTree(float moveSpeed, float stoppingDist)
         {
             this.moveSpeed = moveSpeed;
             this.stoppingDist = stoppingDist;
