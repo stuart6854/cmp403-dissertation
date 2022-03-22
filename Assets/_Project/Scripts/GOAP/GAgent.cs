@@ -8,12 +8,9 @@ namespace stuartmillman.dissertation.goap
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Inventory))]
     [DisallowMultipleComponent]
-    public class GAgent : MonoBehaviour
+    public class GAgent : BaseAgent
     {
         [SerializeField] private GActionList actionList;
-
-        private NavMeshAgent _navAgent;
-        private Inventory _inventory;
 
         private readonly GState _initialState = new GState();
         private readonly GState _goalState = new GState();
@@ -23,21 +20,16 @@ namespace stuartmillman.dissertation.goap
         private Queue<GAction> _actionPlan;
         private GState _currentState;
 
-        public Inventory Inventory => _inventory;
-
         public GState State => _currentState;
         public bool HasPlan => _actionPlan != null && _actionPlan.Count > 0;
 
         private string _agentName;
 
-        private void Awake()
+        protected override void Awake()
         {
-            _navAgent = GetComponent<NavMeshAgent>();
-            _inventory = GetComponent<Inventory>();
+            base.Awake();
 
             _actionList = actionList.Clone();
-
-            _agentName = this.gameObject.name;
         }
 
         /// <summary>
@@ -47,7 +39,7 @@ namespace stuartmillman.dissertation.goap
         {
             _initialState.Clear();
 
-            _initialState.Set("inventory_empty", _inventory.GetTotalAmount() == 0);
+            _initialState.Set("inventory_empty", Inventory.GetTotalAmount() == 0);
         }
 
         /// <summary>
@@ -125,22 +117,6 @@ namespace stuartmillman.dissertation.goap
                     _actionPlan = null;
                 }
             }
-        }
-
-        public void MoveTo(Vector3 position)
-        {
-            _navAgent.destination = position;
-            _navAgent.isStopped = false;
-        }
-
-        public bool AtDestination()
-        {
-            if (_navAgent.pathPending) return false;
-            if (_navAgent.remainingDistance >= _navAgent.stoppingDistance) return false;
-            if (_navAgent.pathStatus == NavMeshPathStatus.PathComplete)
-                return true;
-
-            return false;
         }
     }
 }
