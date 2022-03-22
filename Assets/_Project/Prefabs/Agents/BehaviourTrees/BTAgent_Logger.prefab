@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 5001183468772914599}
   - component: {fileID: 7204235982935816208}
   - component: {fileID: -7787540774925180122}
+  - component: {fileID: 5339584975835814750}
+  - component: {fileID: -1860703026960147321}
   m_Layer: 0
   m_Name: BTAgent_Logger
   m_TagString: Untagged
@@ -180,3 +182,30 @@ MonoBehaviour:
   storageParent: {fileID: 0}
   equippedItemObject: {fileID: 0}
   storedItemObject: {fileID: 0}
+--- !u!114 &5339584975835814750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5001183468772914595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1805f9a3e08d5e34aaa21ea772ad05d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1860703026960147321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5001183468772914595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7afcf5143a7e99448fcab8d767f8769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentJob: 1
+  moveSpeed: 3
+  stoppingDist: 0.8

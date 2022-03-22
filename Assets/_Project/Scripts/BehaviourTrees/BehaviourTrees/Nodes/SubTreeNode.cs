@@ -12,7 +12,7 @@ namespace stuartmillman.dissertation.bt
             this.tree.InitTree();
         }
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
         }
 

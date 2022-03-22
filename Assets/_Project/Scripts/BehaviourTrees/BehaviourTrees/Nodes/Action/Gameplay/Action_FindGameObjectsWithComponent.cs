@@ -3,14 +3,12 @@ using UnityEngine;
 
 namespace stuartmillman.dissertation.bt
 {
-    public class FindAllWithTagNode : ActionNode
+    public class Action_FindGameObjectsWithComponent<T> : ActionNode where T : MonoBehaviour
     {
-        private readonly string tag;
         private readonly string variableToSaveTo;
 
-        public FindAllWithTagNode(string tag, string variableToSaveTo)
+        public Action_FindGameObjectsWithComponent(string variableToSaveTo)
         {
-            this.tag = tag;
             this.variableToSaveTo = variableToSaveTo;
         }
 
@@ -24,13 +22,18 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
-            var gameObjects = GameObject.FindGameObjectsWithTag(tag);
+            var objects = Object.FindObjectsOfType<T>();
 
-            var gameObjectList = new List<GameObject>();
-            if (gameObjects != null)
-                gameObjectList.AddRange(gameObjects);
+            var objectList = new List<GameObject>();
+            if (objects != null)
+            {
+                foreach (var obj in objects)
+                {
+                    objectList.Add(obj.gameObject);
+                }
+            }
 
-            blackboard.Set(variableToSaveTo, gameObjectList);
+            blackboard.Set(variableToSaveTo, objectList);
 
             return NodeState.Success;
         }

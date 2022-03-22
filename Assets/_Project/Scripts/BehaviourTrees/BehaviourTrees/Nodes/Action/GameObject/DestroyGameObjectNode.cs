@@ -12,7 +12,7 @@ namespace stuartmillman.dissertation.bt
             this.variableName = variableName;
         }
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
         }
 

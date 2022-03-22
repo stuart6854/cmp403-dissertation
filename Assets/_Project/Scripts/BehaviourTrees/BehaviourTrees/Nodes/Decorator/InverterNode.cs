@@ -13,7 +13,7 @@ namespace stuartmillman.dissertation.bt
         {
         }
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
         }
 

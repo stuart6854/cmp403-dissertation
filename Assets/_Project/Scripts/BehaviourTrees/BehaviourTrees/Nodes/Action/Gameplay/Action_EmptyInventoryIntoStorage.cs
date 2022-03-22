@@ -6,13 +6,17 @@ namespace stuartmillman.dissertation.bt
     {
         private readonly string variableName;
 
+        private Storage _storage;
+
         public Action_EmptyInventoryIntoStorage(string variableName)
         {
             this.variableName = variableName;
         }
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
+            var storageGameObject = blackboard.Get<GameObject>(variableName);
+            _storage = storageGameObject.GetComponent<Storage>();
         }
 
         protected override void OnStop()
@@ -21,20 +25,30 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
-            var storageGameObject = blackboard.Get<GameObject>(variableName);
-
-            var storage = storageGameObject.GetComponent<Storage>();
-            if (storage == null)
-                return NodeState.Failure;
-
-            foreach (var item in agent.Inventory.GetItems())
+            if (!_storage.IsInteracting)
             {
-                storage.AddToStorage(item, agent.Inventory.GetAmount(item));
+                _storage.Interact();
+            }
+            else
+            {
+                if (_storage.IsInteractionComplete)
+                {
+                    _storage.ResetInteraction();
+
+                    Debug.Log("empty");
+                    
+                    foreach (var item in agent.Inventory.GetItems())
+                    {
+                        _storage.AddToStorage(item, agent.Inventory.GetAmount(item));
+                    }
+
+                    agent.Inventory.Clear();
+
+                    return NodeState.Success;
+                }
             }
 
-            agent.Inventory.Clear();
-
-            return NodeState.Success;
+            return NodeState.Running;
         }
     }
 }

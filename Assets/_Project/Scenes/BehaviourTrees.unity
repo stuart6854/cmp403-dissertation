@@ -1742,6 +1742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BTAgent_Crafter
       objectReference: {fileID: 0}
+    - target: {fileID: 7987284183306399487, guid: 3ca7db3c29835624c95c61d381a6686d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ca7db3c29835624c95c61d381a6686d, type: 3}
 --- !u!1001 &2889571859878438773
@@ -1754,6 +1758,10 @@ PrefabInstance:
     - target: {fileID: 6170721567184683817, guid: ad9fc2fd4eacf504e964c41021e544e5, type: 3}
       propertyPath: m_Name
       value: BTAgent_Farmer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170721567184683817, guid: ad9fc2fd4eacf504e964c41021e544e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6170721567184683818, guid: ad9fc2fd4eacf504e964c41021e544e5, type: 3}
       propertyPath: m_RootOrder
@@ -1922,6 +1930,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1860703026960147321, guid: 393dfa4c12cb11740b419517e58655df, type: 3}
+      propertyPath: agentJob
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5001183468772914592, guid: 393dfa4c12cb11740b419517e58655df, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1982,6 +1994,10 @@ PrefabInstance:
     - target: {fileID: 8030374752267228685, guid: b2efb64d8c12ab84e9f11f14871ca762, type: 3}
       propertyPath: m_Name
       value: BTAgent_Miner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8030374752267228685, guid: b2efb64d8c12ab84e9f11f14871ca762, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8030374752267228686, guid: b2efb64d8c12ab84e9f11f14871ca762, type: 3}
       propertyPath: m_RootOrder

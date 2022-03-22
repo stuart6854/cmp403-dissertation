@@ -6,7 +6,7 @@ namespace stuartmillman.dissertation
     public class Tree : WorldObject
     {
         [SerializeField] private float timeToChop;
-        private float _interactTime = 0.0f;
+        [SerializeField] private float _interactTime = 0.0f;
 
         public float TimeToChop => timeToChop;
 

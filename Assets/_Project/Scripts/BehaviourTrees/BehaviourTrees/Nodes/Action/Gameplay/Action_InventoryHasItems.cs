@@ -4,7 +4,7 @@ namespace stuartmillman.dissertation.bt
 {
     public class Action_InventoryHasItems : ActionNode
     {
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
         }
 
@@ -14,7 +14,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
-            return agent != null ? NodeState.Success : NodeState.Failure;
+            Debug.Log("Inventory has items?");
+            return agent.Inventory.GetTotalAmount() > 0 ? NodeState.Success : NodeState.Failure;
         }
     }
 }

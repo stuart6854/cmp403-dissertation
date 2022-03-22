@@ -16,7 +16,7 @@ namespace stuartmillman.dissertation.bt
             this.variableToSaveTo = variableToSaveTo;
         }
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
         }
 

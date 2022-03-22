@@ -11,7 +11,7 @@ namespace stuartmillman.dissertation.bt
             child = childNode;
         }
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
         }
 

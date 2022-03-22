@@ -11,7 +11,7 @@ namespace stuartmillman.dissertation.bt
         {
             if (!hasStarted)
             {
-                OnStart();
+                OnStart(agent, blackboard);
                 hasStarted = true;
             }
 
@@ -26,7 +26,7 @@ namespace stuartmillman.dissertation.bt
             return State;
         }
 
-        protected abstract void OnStart();
+        protected abstract void OnStart(BTAgent agent, Blackboard blackboard);
         protected abstract void OnStop();
         protected abstract NodeState OnUpdate(BTAgent agent, Blackboard blackboard);
     }

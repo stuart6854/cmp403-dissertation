@@ -11,7 +11,7 @@ namespace stuartmillman.dissertation.bt
     {
         private int childIndex;
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
             childIndex = 0;
         }

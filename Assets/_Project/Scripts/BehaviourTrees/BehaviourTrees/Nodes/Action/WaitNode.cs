@@ -12,7 +12,7 @@ namespace stuartmillman.dissertation.bt
             this.seconds = seconds;
         }
 
-        protected override void OnStart()
+        protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
             startTime = Time.time;
         }
