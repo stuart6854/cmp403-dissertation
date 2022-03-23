@@ -29,7 +29,7 @@ namespace stuartmillman.dissertation.goap
 
         protected override bool Run_Internal(GAgent agent)
         {
-            if (!_craftingBench.IsInteracting)
+            if (!_craftingBench.IsInteracting && !_craftingBench.IsInteractionComplete)
             {
                 _craftingBench.Interact();
             }
