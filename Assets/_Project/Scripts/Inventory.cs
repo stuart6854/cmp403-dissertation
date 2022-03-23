@@ -56,7 +56,12 @@ namespace stuartmillman.dissertation
             if (!Has(itemName))
                 return false;
 
-            if (_inventory[itemName] > itemAmount)
+            if (_inventory[itemName] == itemAmount)
+            {
+                _inventory.Remove(itemName);
+                return true;
+            }
+            else if (_inventory[itemName] >= itemAmount)
             {
                 _inventory[itemName] -= itemAmount;
                 return true;
