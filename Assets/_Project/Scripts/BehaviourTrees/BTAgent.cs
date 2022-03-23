@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace stuartmillman.dissertation.bt
 {
     public class BTAgent : BaseAgent
     {
+        [SerializeField] private Animator animator;
+        [SerializeField] private NavMeshAgent navMeshAgent;
+
         [Header("Settings")]
         public Transform equipmentParent;
 
@@ -24,6 +29,11 @@ namespace stuartmillman.dissertation.bt
             //
             // if (storedItem != null)
             //     StoreItem(storedItem);
+        }
+
+        private void LateUpdate()
+        {
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
         }
 
         /*public void EquipItem(Item item)
