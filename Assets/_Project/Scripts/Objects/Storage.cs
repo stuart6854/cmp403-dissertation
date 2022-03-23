@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,6 +59,25 @@ namespace stuartmillman.dissertation
 
             _items[name] -= amount;
             return amount;
+        }
+
+        private void OnGUI()
+        {
+            GUILayout.BeginVertical("Storage");
+            GUILayout.Label("Storage Contents");
+            if (_items.Count == 0)
+            {
+                GUILayout.Label("Empty");
+            }
+            else
+            {
+                foreach (var pair in _items)
+                {
+                    GUILayout.Label(pair.Key + ": " + pair.Value);
+                }
+            }
+
+            GUILayout.EndVertical();
         }
     }
 }
