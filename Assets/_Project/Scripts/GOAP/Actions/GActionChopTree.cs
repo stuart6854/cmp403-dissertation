@@ -22,6 +22,7 @@ namespace stuartmillman.dissertation.goap
             if (!_tree.IsInteracting)
             {
                 _tree.Interact();
+                agent.TriggerChopAnim();
             }
             else
             {

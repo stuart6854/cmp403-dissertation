@@ -21,6 +21,7 @@ namespace stuartmillman.dissertation.goap
             if (!_sticks.IsInteracting)
             {
                 _sticks.Interact();
+                agent.TriggerFarmAnim();
             }
             else
             {

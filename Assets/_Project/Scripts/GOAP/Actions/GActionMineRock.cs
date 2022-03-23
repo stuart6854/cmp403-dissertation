@@ -22,6 +22,7 @@ namespace stuartmillman.dissertation.goap
             if (!_rock.IsInteracting)
             {
                 _rock.Interact();
+                agent.TriggerChopAnim();
             }
             else
             {
