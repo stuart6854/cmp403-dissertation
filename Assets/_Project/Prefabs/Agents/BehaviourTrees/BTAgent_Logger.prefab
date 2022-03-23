@@ -875,12 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23d02da0ab5c714c9ac0370ae3f29c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 5416801498936168907}
-  navMeshAgent: {fileID: 5001183468772914599}
-  equipmentParent: {fileID: 0}
-  storageParent: {fileID: 0}
-  equippedItemObject: {fileID: 0}
-  storedItemObject: {fileID: 0}
+  _animator: {fileID: 5416801498936168907}
 --- !u!114 &5339584975835814750
 MonoBehaviour:
   m_ObjectHideFlags: 0

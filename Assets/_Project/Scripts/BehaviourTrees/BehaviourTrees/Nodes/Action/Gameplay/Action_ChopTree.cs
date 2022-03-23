@@ -28,6 +28,7 @@ namespace stuartmillman.dissertation.bt
             if (!_tree.IsInteracting)
             {
                 _tree.Interact();
+                agent.TriggerChopAnim();
             }
             else
             {

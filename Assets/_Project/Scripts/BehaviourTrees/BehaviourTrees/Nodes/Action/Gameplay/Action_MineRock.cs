@@ -28,6 +28,7 @@ namespace stuartmillman.dissertation.bt
             if (!_rock.IsInteracting)
             {
                 _rock.Interact();
+                agent.TriggerChopAnim();
             }
             else
             {

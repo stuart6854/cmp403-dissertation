@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace stuartmillman.dissertation
 {
     public class BaseAgent : MonoBehaviour
     {
+        [SerializeField] private Animator _animator;
         private NavMeshAgent _navAgent;
         private Inventory _inventory;
 
@@ -18,6 +20,21 @@ namespace stuartmillman.dissertation
             _inventory = GetComponent<Inventory>();
 
             OriginalAgentName = this.gameObject.name;
+        }
+
+        private void LateUpdate()
+        {
+            _animator.SetFloat("Speed", _navAgent.velocity.magnitude);
+        }
+
+        public void TriggerChopAnim()
+        {
+            _animator.SetTrigger("Chop");
+        }
+
+        public void TriggerFarmAnim()
+        {
+            _animator.SetTrigger("Farm");
         }
 
         public void MoveTo(Vector3 position)

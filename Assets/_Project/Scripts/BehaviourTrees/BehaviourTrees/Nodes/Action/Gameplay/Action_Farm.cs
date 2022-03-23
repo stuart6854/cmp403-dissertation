@@ -32,6 +32,7 @@ namespace stuartmillman.dissertation.bt
             if (!_farmLand.IsInteracting && !_farmLand.IsInteractionComplete)
             {
                 _farmLand.Interact();
+                agent.TriggerFarmAnim();
             }
             else
             {
