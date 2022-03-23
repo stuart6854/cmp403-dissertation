@@ -37,7 +37,6 @@ namespace stuartmillman.dissertation.bt
             {
                 if (_farmLand.IsInteractionComplete)
                 {
-                    Debug.Log("Farming complete");
                     _farmLand.ResetInteraction();
 
                     agent.Inventory.Add(_cropName, _cropAmount);
