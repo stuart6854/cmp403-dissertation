@@ -20,60 +20,63 @@ namespace stuartmillman.dissertation
         {
         }
 
-        public bool HasInStorage(string name)
+        public bool HasInStorage(string itemName)
         {
-            return _items.ContainsKey(name);
+            return _items.ContainsKey(itemName);
         }
 
-        public int QueryAmount(string name)
+        public int QueryAmount(string itemName)
         {
-            if (!HasInStorage(name))
+            if (!HasInStorage(itemName))
                 return -1;
 
-            return _items[name];
+            return _items[itemName];
         }
 
-        public void AddToStorage(string name, int amount)
+        public void AddToStorage(string itemName, int amount)
         {
-            if (_items.ContainsKey(name))
+            if (_items.ContainsKey(itemName))
             {
-                _items[name] += amount;
+                _items[itemName] += amount;
             }
             else
             {
-                _items.Add(name, amount);
+                _items.Add(itemName, amount);
             }
         }
 
-        public int RemoveFromStorage(string name, int amount)
+        public int RemoveFromStorage(string itemName, int amount)
         {
-            if (!HasInStorage(name))
+            if (!HasInStorage(itemName))
                 return 0;
 
-            if (_items[name] < amount)
+            if (_items[itemName] <= amount)
             {
-                var amnt = _items[name];
-                _items.Remove(name);
+                var amnt = _items[itemName];
+                _items.Remove(itemName);
                 return amnt;
             }
 
-            _items[name] -= amount;
+            _items[itemName] -= amount;
             return amount;
         }
 
         private void OnGUI()
         {
+            GUIStyle style = new GUIStyle();
+            style.normal.textColor = Color.magenta;
+
             GUILayout.BeginVertical("Storage");
-            GUILayout.Label("Storage Contents");
+            GUILayout.Label("Storage Contents", style);
             if (_items.Count == 0)
             {
-                GUILayout.Label("Empty");
+                GUILayout.Label("Empty", style);
             }
             else
             {
                 foreach (var pair in _items)
                 {
-                    GUILayout.Label(pair.Key + ": " + pair.Value);
+                    GUILayout.Label(pair.Key + ": " + pair.Value, style);
                 }
             }
 
