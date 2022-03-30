@@ -15,8 +15,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override void OnStart(BTAgent agent, Blackboard blackboard)
         {
-            var treeObject = blackboard.Get<GameObject>(variableName);
-            _rock = treeObject.GetComponent<Rock>();
+            var rockObject = blackboard.Get<GameObject>(variableName);
+            _rock = rockObject.GetComponent<Rock>();
         }
 
         protected override void OnStop()

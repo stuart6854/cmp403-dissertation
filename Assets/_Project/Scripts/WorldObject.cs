@@ -4,6 +4,8 @@ namespace stuartmillman.dissertation
 {
     public class WorldObject : MonoBehaviour
     {
+        public bool IsInUse;
+
         public bool IsInteracting { get; protected set; }
 
         public bool IsInteractionComplete { get; protected set; }
@@ -21,6 +23,7 @@ namespace stuartmillman.dissertation
         {
             IsInteracting = false;
             IsInteractionComplete = false;
+            IsInUse = false;
         }
 
         /// <summary>

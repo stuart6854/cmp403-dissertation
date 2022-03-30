@@ -30,9 +30,13 @@ namespace stuartmillman.dissertation.bt
             {
                 foreach (var farmLand in farmlands)
                 {
+                    if (farmLand.IsInUse)
+                        continue;
+
                     if (farmLand.CropName == _cropName)
                     {
                         blackboard.Set(_variableToSaveTo, farmLand.gameObject);
+                        farmLand.IsInUse = true;
                         return NodeState.Success;
                     }
                 }

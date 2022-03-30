@@ -25,6 +25,9 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            // if (_tree == null)
+            //     return NodeState.Failure;
+
             if (!_tree.IsInteracting)
             {
                 _tree.Interact();
