@@ -47,7 +47,7 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public override bool CheckProceduralRequirements()
+        public override bool CheckProceduralRequirements(GAgent agent)
         {
             var craftingBenches = FindObjectsOfType<CraftingBench>();
             if (craftingBenches == null || craftingBenches.Length == 0)

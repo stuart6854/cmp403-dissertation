@@ -36,13 +36,33 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public override bool CheckProceduralRequirements()
+        public override bool CheckProceduralRequirements(GAgent agent)
         {
             var trees = FindObjectsOfType<Tree>();
             if (trees == null || trees.Length == 0)
                 return false;
 
-            _tree = trees[0];
+            Tree nearestTree = null;
+            var dist = float.MaxValue;
+            foreach (var tree in trees)
+            {
+                if (tree.IsInUse)
+                    continue;
+
+                var tempDist = Vector3.SqrMagnitude(tree.transform.position - agent.transform.position);
+                if (tempDist < dist)
+                {
+                    nearestTree = tree;
+                    dist = tempDist;
+                }
+            }
+
+            if (nearestTree == null)
+                return false;
+
+            nearestTree.IsInUse = true;
+
+            _tree = nearestTree;
             SetCost(_tree.TimeToChop);
 
             SetTargetLocation(_tree.transform.position);

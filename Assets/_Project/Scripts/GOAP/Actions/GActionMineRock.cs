@@ -36,14 +36,33 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public override bool CheckProceduralRequirements()
+        public override bool CheckProceduralRequirements(GAgent agent)
         {
             var rocks = FindObjectsOfType<Rock>();
             if (rocks == null || rocks.Length == 0)
                 return false;
 
-            // TODO: Find the nearest rock
-            _rock = rocks[0];
+            Rock nearestRock = null;
+            var dist = float.MaxValue;
+            foreach (var rock in rocks)
+            {
+                if (rock.IsInUse)
+                    continue;
+
+                var tempDist = Vector3.SqrMagnitude(rock.transform.position - agent.transform.position);
+                if (tempDist < dist)
+                {
+                    nearestRock = rock;
+                    dist = tempDist;
+                }
+            }
+
+            if (nearestRock == null)
+                return false;
+
+            nearestRock.IsInUse = true;
+
+            _rock = nearestRock;
             SetCost(_rock.TimeToMine);
 
             SetTargetLocation(_rock.transform.position);

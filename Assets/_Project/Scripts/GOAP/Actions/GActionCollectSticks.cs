@@ -35,13 +35,33 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public override bool CheckProceduralRequirements()
+        public override bool CheckProceduralRequirements(GAgent agent)
         {
             var sticks = FindObjectsOfType<Sticks>();
             if (sticks == null || sticks.Length == 0)
                 return false;
 
-            _sticks = sticks[0];
+            Sticks nearestStick = null;
+            var dist = float.MaxValue;
+            foreach (var stick in sticks)
+            {
+                if (stick.IsInUse)
+                    continue;
+
+                var tempDist = Vector3.SqrMagnitude(stick.transform.position - agent.transform.position);
+                if (tempDist < dist)
+                {
+                    nearestStick = stick;
+                    dist = tempDist;
+                }
+            }
+
+            if (nearestStick == null)
+                return false;
+
+            nearestStick.IsInUse = true;
+
+            _sticks = nearestStick;
             SetCost(_sticks.TimeToCollect);
 
             SetTargetLocation(_sticks.transform.position);

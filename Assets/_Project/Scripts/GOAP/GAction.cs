@@ -110,8 +110,9 @@ namespace stuartmillman.dissertation.goap
         /// <summary>
         /// Runs procedural checks to determine if this action can run.
         /// </summary>
+        /// <param name="agent"></param>
         /// <returns>True if action can run</returns>
-        public virtual bool CheckProceduralRequirements()
+        public virtual bool CheckProceduralRequirements(GAgent agent)
         {
             return true;
         }

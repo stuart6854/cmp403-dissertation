@@ -43,7 +43,7 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public override bool CheckProceduralRequirements()
+        public override bool CheckProceduralRequirements(GAgent agent)
         {
             var storages = FindObjectsOfType<Storage>();
             if (storages == null || storages.Length == 0)

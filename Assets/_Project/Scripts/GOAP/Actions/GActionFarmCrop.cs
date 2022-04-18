@@ -40,13 +40,12 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
-        public override bool CheckProceduralRequirements()
+        public override bool CheckProceduralRequirements(GAgent agent)
         {
             var farmLands = FindObjectsOfType<FarmLand>();
             if (farmLands == null || farmLands.Length == 0)
                 return false;
 
-            // TODO: Find the nearest rock
             foreach (var farmLand in farmLands)
             {
                 if (farmLand.CropName == _cropName)

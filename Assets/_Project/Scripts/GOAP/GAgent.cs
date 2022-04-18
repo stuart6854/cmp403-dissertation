@@ -85,7 +85,7 @@ namespace stuartmillman.dissertation.goap
         /// </summary>
         public void Plan()
         {
-            var newPlan = GPlanner.Plan(_actionList, _initialState, _goalState);
+            var newPlan = GPlanner.Plan(this, _actionList, _initialState, _goalState);
             if (newPlan == null || newPlan.Count == 0)
             {
                 // Failed to create plane

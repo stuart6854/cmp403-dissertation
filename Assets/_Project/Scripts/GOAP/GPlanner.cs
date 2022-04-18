@@ -14,11 +14,12 @@ namespace stuartmillman.dissertation.goap
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="agent"></param>
         /// <param name="actionList"></param>
         /// <param name="initialState">The initial world/agent state</param>
         /// <param name="goalState">The goal state</param>
         /// <returns>Array of GAction for agent to carry out</returns>
-        public static Queue<GAction> Plan(GActionList actionList, GState initialState, GState goalState)
+        public static Queue<GAction> Plan(GAgent agent, GActionList actionList, GState initialState, GState goalState)
         {
             float startTime = Time.realtimeSinceStartup;
 
@@ -32,7 +33,7 @@ namespace stuartmillman.dissertation.goap
                 action.Reset();
 
                 action.PrepareForPlanning();
-                if (action.CheckProceduralRequirements())
+                if (action.CheckProceduralRequirements(agent))
                     usableActions.Add(action);
             }
 
