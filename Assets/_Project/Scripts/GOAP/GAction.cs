@@ -81,6 +81,13 @@ namespace stuartmillman.dissertation.goap
         }
 
         /// <summary>
+        /// Called by the planner when an action is included in a final action plan.
+        /// </summary>
+        public virtual void OnActionChosen()
+        {
+        }
+
+        /// <summary>
         /// Called by the AI agent to carry out this action.
         /// </summary>
         public bool Run(GAgent agent)

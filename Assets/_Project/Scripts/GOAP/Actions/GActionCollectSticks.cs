@@ -35,6 +35,11 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
+        public override void OnActionChosen()
+        {
+            _sticks.IsInUse = true;
+        }
+
         public override bool CheckProceduralRequirements(GAgent agent)
         {
             var sticks = FindObjectsOfType<Sticks>();
@@ -61,8 +66,6 @@ namespace stuartmillman.dissertation.goap
 
             if (nearestStick == null)
                 return false;
-
-            nearestStick.IsInUse = true;
 
             _sticks = nearestStick;
             SetCost(_sticks.TimeToCollect);

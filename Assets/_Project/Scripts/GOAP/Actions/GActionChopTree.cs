@@ -36,6 +36,11 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
+        public override void OnActionChosen()
+        {
+            _tree.IsInUse = true;
+        }
+
         public override bool CheckProceduralRequirements(GAgent agent)
         {
             var trees = FindObjectsOfType<Tree>();
@@ -62,8 +67,6 @@ namespace stuartmillman.dissertation.goap
 
             if (nearestTree == null)
                 return false;
-
-            nearestTree.IsInUse = true;
 
             _tree = nearestTree;
             SetCost(_tree.TimeToChop);

@@ -36,6 +36,11 @@ namespace stuartmillman.dissertation.goap
             return false;
         }
 
+        public override void OnActionChosen()
+        {
+            _rock.IsInUse = true;
+        }
+
         public override bool CheckProceduralRequirements(GAgent agent)
         {
             var rocks = FindObjectsOfType<Rock>();
@@ -62,8 +67,6 @@ namespace stuartmillman.dissertation.goap
 
             if (nearestRock == null)
                 return false;
-
-            nearestRock.IsInUse = true;
 
             _rock = nearestRock;
             SetCost(_rock.TimeToMine);

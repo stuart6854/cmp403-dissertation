@@ -65,6 +65,7 @@ namespace stuartmillman.dissertation.goap
             var node = cheapest;
             while (node.parent != null)
             {
+                node.action.OnActionChosen();
                 actionPlanList.Insert(0, node.action);
                 node = node.parent;
             }
