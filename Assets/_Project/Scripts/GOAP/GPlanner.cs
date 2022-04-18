@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -71,8 +72,9 @@ namespace stuartmillman.dissertation.goap
             }
 
             var time = Time.realtimeSinceStartup - startTime;
-            Debug.Log("[GPlanner] Plan complete: " + (time * 1000.0f) + "ms.");
-
+            // Debug.Log("[GPlanner] Plan complete: " + (time * 1000.0f) + "ms.");
+            PrintPlanTime(agent.name + " - " + (time * 1000)+ "ms");
+            
             // Return action plan as queue
             var actionPlan = new Queue<GAction>(actionPlanList);
             return actionPlan;
@@ -190,6 +192,15 @@ namespace stuartmillman.dissertation.goap
             var subsetList = new List<GAction>(actions);
             subsetList.Remove(toRemoveAction);
             return subsetList;
+        }
+
+        private static void PrintPlanTime(string line)
+        {
+            using var writer = new StreamWriter("gplanner_plan_times.txt", true);
+            writer.WriteLine(line);
+
+            writer.Flush();
+            writer.Close();
         }
     }
 
