@@ -12,7 +12,7 @@ namespace stuartmillman.dissertation
 
         public Inventory Inventory => _inventory;
 
-        protected string OriginalAgentName { get; private set; }
+        public string OriginalAgentName { get; private set; }
 
         protected virtual void Awake()
         {

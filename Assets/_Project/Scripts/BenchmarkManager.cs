@@ -9,7 +9,7 @@ namespace stuartmillman.dissertation
         public static BenchmarkManager Instance { get; private set; }
 
         private Dictionary<string, BenchmarkTime> _benchmarks = new Dictionary<string, BenchmarkTime>();
-        
+
         private void Awake()
         {
             if (Instance != null)

@@ -23,8 +23,6 @@ namespace stuartmillman.dissertation.goap
         public GState State => _currentState;
         public bool HasPlan => _actionPlan != null && _actionPlan.Count > 0;
 
-        private string _agentName;
-
         protected override void Awake()
         {
             base.Awake();
@@ -104,7 +102,7 @@ namespace stuartmillman.dissertation.goap
             {
                 var currentAction = _actionPlan.Peek();
 
-                this.gameObject.name = _agentName + " [" + currentAction.name + "]";
+                this.gameObject.name = OriginalAgentName + " [" + currentAction.name + "]";
                 if (currentAction.Run(this))
                 {
                     _actionPlan.Dequeue();
@@ -113,7 +111,7 @@ namespace stuartmillman.dissertation.goap
                 if (_actionPlan.Count == 0)
                 {
                     Debug.Log("[GAgent] Finished plan.");
-                    this.gameObject.name = _agentName + " []";
+                    this.gameObject.name = OriginalAgentName + " []";
                     _actionPlan = null;
                 }
             }
