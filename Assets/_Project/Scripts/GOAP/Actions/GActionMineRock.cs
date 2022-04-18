@@ -40,7 +40,10 @@ namespace stuartmillman.dissertation.goap
         {
             var rocks = FindObjectsOfType<Rock>();
             if (rocks == null || rocks.Length == 0)
+            {
+                ScenarioManager.Instance.SetNoRocks();
                 return false;
+            }
 
             Rock nearestRock = null;
             var dist = float.MaxValue;

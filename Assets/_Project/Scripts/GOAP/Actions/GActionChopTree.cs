@@ -40,7 +40,10 @@ namespace stuartmillman.dissertation.goap
         {
             var trees = FindObjectsOfType<Tree>();
             if (trees == null || trees.Length == 0)
+            {
+                ScenarioManager.Instance.SetNoTrees();
                 return false;
+            }
 
             Tree nearestTree = null;
             var dist = float.MaxValue;

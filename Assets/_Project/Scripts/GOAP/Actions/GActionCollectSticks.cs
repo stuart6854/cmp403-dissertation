@@ -39,7 +39,10 @@ namespace stuartmillman.dissertation.goap
         {
             var sticks = FindObjectsOfType<Sticks>();
             if (sticks == null || sticks.Length == 0)
+            {
+                ScenarioManager.Instance.SetNoSticks();
                 return false;
+            }
 
             Sticks nearestStick = null;
             var dist = float.MaxValue;
