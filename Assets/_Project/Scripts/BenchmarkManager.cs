@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ namespace stuartmillman.dissertation
         public static BenchmarkManager Instance { get; private set; }
 
         private Dictionary<string, BenchmarkTime> _benchmarks = new Dictionary<string, BenchmarkTime>();
-
+        
         private void Awake()
         {
             if (Instance != null)
@@ -34,9 +33,9 @@ namespace stuartmillman.dissertation
             _benchmarks[benchmarkName].Stop();
         }
 
-        public void OutputBenchmarks()
+        public void OutputBenchmarks(string fileName)
         {
-            using var writer = new StreamWriter("benchmarks.txt");
+            using var writer = new StreamWriter(fileName);
             foreach (var pairs in _benchmarks)
             {
                 var benchmark = pairs.Value;
@@ -46,6 +45,8 @@ namespace stuartmillman.dissertation
 
             writer.Flush();
             writer.Close();
+
+            print("Benchmarks have been written to file: " + fileName);
         }
     }
 }
