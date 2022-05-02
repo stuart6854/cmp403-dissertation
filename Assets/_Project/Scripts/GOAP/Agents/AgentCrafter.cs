@@ -28,7 +28,14 @@ namespace stuartmillman.dissertation
             _gAgent.ClearGoals();
             // _gAgent.ClearActions();
 
-            _gAgent.AddGoal("wood_chair", 1);
+            if (_gAgent.Inventory.GetTotalAmount() == 0)
+            {
+                _gAgent.AddGoal("wood_chair", 1);
+            }
+            else
+            {
+                _gAgent.AddGoal("inventory_empty", true);
+            }
         }
     }
 }
