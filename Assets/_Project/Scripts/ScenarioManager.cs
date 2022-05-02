@@ -7,6 +7,7 @@ namespace stuartmillman.dissertation
     {
         public static ScenarioManager Instance { get; private set; }
 
+        private static int ScenarioIterations = 3;
         private static int RunCount = 0;
         private static bool FirstScenario = true;
 
@@ -15,7 +16,7 @@ namespace stuartmillman.dissertation
         private bool _noSticks;
 
         private bool _isComplete;
-        
+
         private void Awake()
         {
             if (Instance != null)
@@ -60,14 +61,14 @@ namespace stuartmillman.dissertation
                 Application.Quit();
             }
 
-            if (RunCount < 4)
+            if (RunCount < ScenarioIterations - 1)
             {
                 print("Next Scenario Run");
-                
+
                 RunCount++;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-            else if (RunCount == 5)
+            else if (RunCount == ScenarioIterations)
             {
                 print("Next Scenario");
                 RunCount = 0;
