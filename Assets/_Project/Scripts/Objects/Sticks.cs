@@ -25,13 +25,14 @@ namespace stuartmillman.dissertation
             }
         }
 
-        public override bool Interact()
+        public override bool Interact(GameObject user)
         {
             if (IsInteracting)
                 return false;
 
             IsInteracting = true;
             _interactTime = timeToCollect;
+            User = user;
 
             return true;
         }

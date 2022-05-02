@@ -8,10 +8,11 @@ namespace stuartmillman.dissertation
     {
         private readonly Dictionary<string, int> _items = new Dictionary<string, int>();
 
-        public override bool Interact()
+        public override bool Interact(GameObject user)
         {
             IsInteracting = true;
             IsInteractionComplete = true;
+            User = user;
 
             return true;
         }

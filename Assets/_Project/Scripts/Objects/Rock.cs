@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace stuartmillman.dissertation
@@ -18,19 +19,26 @@ namespace stuartmillman.dissertation
                 {
                     IsInteractionComplete = true;
                     _interactTime = 0.0f;
-
-                    Destroy(this.gameObject);
                 }
             }
         }
 
-        public override bool Interact()
+        private void LateUpdate()
+        {
+            if (IsInteracting && _interactTime <= 0.0f)
+            {
+                Destroy(this.gameObject, 0.1f);
+            }
+        }
+
+        public override bool Interact(GameObject user)
         {
             if (IsInteracting)
                 return false;
 
             IsInteracting = true;
             _interactTime = timeToMine;
+            User = user;
 
             return true;
         }

@@ -31,12 +31,12 @@ namespace stuartmillman.dissertation.bt
         {
             if (!_farmLand.IsInteracting && !_farmLand.IsInteractionComplete)
             {
-                _farmLand.Interact();
+                _farmLand.Interact(agent.gameObject);
                 agent.TriggerFarmAnim();
             }
             else
             {
-                if (_farmLand.IsInteractionComplete)
+                if (_farmLand.IsInteractionComplete && _farmLand.User == agent.gameObject)
                 {
                     _farmLand.ResetInteraction();
 

@@ -21,12 +21,12 @@ namespace stuartmillman.dissertation.goap
         {
             if (!_rock.IsInteracting)
             {
-                _rock.Interact();
+                _rock.Interact(agent.gameObject);
                 agent.TriggerChopAnim();
             }
             else
             {
-                if (_rock.IsInteractionComplete)
+                if (_rock.IsInteractionComplete && _rock.User == agent.gameObject)
                 {
                     agent.Inventory.Add("stones", 5);
                     return true;

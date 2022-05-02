@@ -25,7 +25,7 @@ namespace stuartmillman.dissertation
             }
         }
 
-        public override bool Interact()
+        public override bool Interact(GameObject user)
         {
             if (IsInteracting)
                 return false;
@@ -33,6 +33,7 @@ namespace stuartmillman.dissertation
             IsInteractionComplete = false;
             IsInteracting = true;
             _interactTime = timeToGrow;
+            User = user;
 
             return true;
         }

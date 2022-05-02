@@ -27,11 +27,11 @@ namespace stuartmillman.dissertation.bt
         {
             if (!_storage.IsInteracting)
             {
-                _storage.Interact();
+                _storage.Interact(agent.gameObject);
             }
             else
             {
-                if (_storage.IsInteractionComplete)
+                if (_storage.IsInteractionComplete && _storage.User == agent.gameObject)
                 {
                     _storage.ResetInteraction();
                     

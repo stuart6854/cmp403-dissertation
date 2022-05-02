@@ -31,11 +31,11 @@ namespace stuartmillman.dissertation.goap
         {
             if (!_craftingBench.IsInteracting && !_craftingBench.IsInteractionComplete)
             {
-                _craftingBench.Interact();
+                _craftingBench.Interact(agent.gameObject);
             }
             else
             {
-                if (_craftingBench.IsInteractionComplete)
+                if (_craftingBench.IsInteractionComplete && _craftingBench.User == agent.gameObject)
                 {
                     _craftingBench.ResetInteraction();
 

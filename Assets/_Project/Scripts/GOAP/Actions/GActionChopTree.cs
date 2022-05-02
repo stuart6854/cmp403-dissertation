@@ -21,12 +21,12 @@ namespace stuartmillman.dissertation.goap
         {
             if (!_tree.IsInteracting)
             {
-                _tree.Interact();
+                _tree.Interact(agent.gameObject);
                 agent.TriggerChopAnim();
             }
             else
             {
-                if (_tree.IsInteractionComplete)
+                if (_tree.IsInteractionComplete && _tree.User == agent.gameObject)
                 {
                     agent.Inventory.Add("wood_logs", 5);
                     return true;

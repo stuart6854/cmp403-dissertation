@@ -37,11 +37,11 @@ namespace stuartmillman.dissertation.bt
         {
             if (!_craftingBench.IsInteracting)
             {
-                _craftingBench.Interact();
+                _craftingBench.Interact(agent.gameObject);
             }
             else
             {
-                if (_craftingBench.IsInteractionComplete)
+                if (_craftingBench.IsInteractionComplete && _craftingBench.User == agent.gameObject)
                 {
                     for (int i = 0; i < _requiredItemNames.Length; i++)
                     {

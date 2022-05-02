@@ -21,24 +21,23 @@ namespace stuartmillman.dissertation.goap
 
         protected override bool Run_Internal(GAgent agent)
         {
-            if (!_storage.IsInteracting)
-            {
-                _storage.Interact();
-            }
-            else
-            {
-                if (_storage.IsInteractionComplete)
-                {
-                    _storage.ResetInteraction();
+            // if (!_storage.IsInteracting)
+            // {
+            //     _storage.Interact(agent.gameObject);
+            // }
+            // else
+            // {
+            //     if (_storage.IsInteractionComplete && _storage.User == agent.gameObject)
+            //     {
+            //         _storage.ResetInteraction();
 
-                    // TODO: Make sure can remove from inventory
                     _storage.RemoveFromStorage(_itemName, _itemAmount);
                     agent.Inventory.Add(_itemName, _itemAmount);
                     return true;
-                }
-            }
-
-            return false;
+            //     }
+            // }
+            //
+            // return false;
         }
 
         public override bool CheckProceduralRequirements(GAgent agent)

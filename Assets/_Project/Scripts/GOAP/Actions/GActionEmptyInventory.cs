@@ -19,15 +19,15 @@ namespace stuartmillman.dissertation.goap
 
         protected override bool Run_Internal(GAgent agent)
         {
-            if (!_storage.IsInteracting)
-            {
-                _storage.Interact();
-            }
-            else
-            {
-                if (_storage.IsInteractionComplete)
-                {
-                    _storage.ResetInteraction();
+            // if (!_storage.IsInteracting)
+            // {
+            //     _storage.Interact(agent.gameObject);
+            // }
+            // else
+            // {
+            //     if (_storage.IsInteractionComplete && _storage.User == agent.gameObject)
+            //     {
+            //         _storage.ResetInteraction();
 
                     foreach (var item in agent.Inventory.GetItems())
                     {
@@ -36,11 +36,11 @@ namespace stuartmillman.dissertation.goap
 
                     agent.Inventory.Clear();
 
-                    return true;
-                }
-            }
+            return true;
+            //     }
+            // }
 
-            return false;
+            // return false;
         }
 
         public override bool CheckProceduralRequirements(GAgent agent)

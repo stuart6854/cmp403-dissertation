@@ -20,12 +20,12 @@ namespace stuartmillman.dissertation.goap
         {
             if (!_sticks.IsInteracting)
             {
-                _sticks.Interact();
+                _sticks.Interact(agent.gameObject);
                 agent.TriggerFarmAnim();
             }
             else
             {
-                if (_sticks.IsInteractionComplete)
+                if (_sticks.IsInteractionComplete && _sticks.User == agent.gameObject)
                 {
                     agent.Inventory.Add("wood_logs", 1);
                     return true;
