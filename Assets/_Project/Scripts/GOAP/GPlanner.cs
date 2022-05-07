@@ -73,7 +73,7 @@ namespace stuartmillman.dissertation.goap
 
             var time = Time.realtimeSinceStartup - startTime;
             // Debug.Log("[GPlanner] Plan complete: " + (time * 1000.0f) + "ms.");
-            PrintPlanTime(agent.OriginalAgentName + " - " + (time * 1000)+ "ms");
+            PrintPlanTime(agent.OriginalAgentName + "," + (time * 1000)+ ",");
             
             // Return action plan as queue
             var actionPlan = new Queue<GAction>(actionPlanList);
