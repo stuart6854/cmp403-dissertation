@@ -8,7 +8,7 @@ namespace stuartmillman.dissertation
         public static ScenarioManager Instance { get; private set; }
 
         private static int ScenarioIterations = 3;
-        private static int RunCount = 0;
+        private static int RunIndex = 1;
         private static bool FirstScenario = true;
 
         private bool _noTrees;
@@ -62,26 +62,26 @@ namespace stuartmillman.dissertation
             BenchmarkManager.Instance.StopBenchmark("scenario_time");
 
             var sceneName = SceneManager.GetActiveScene().name;
-            var fileName = "benchmarks_" + sceneName + "_" + RunCount + ".txt";
+            var fileName = "benchmarks_" + sceneName + "_" + RunIndex + ".txt";
             BenchmarkManager.Instance.OutputBenchmarks(fileName);
 
-            if (!FirstScenario)
+            RunIndex++;
+            if (RunIndex <= ScenarioIterations)
             {
-                print("Quiting Application");
-                Application.Quit();
-            }
-
-            if (RunCount < ScenarioIterations - 1)
-            {
-                print("Next Scenario Run");
-
-                RunCount++;
+                print("Next Scenario Run " + RunIndex);
+                
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-            else if (RunCount == ScenarioIterations)
+            else if (RunIndex > ScenarioIterations)
             {
+                if (!FirstScenario)
+                {
+                    print("Quiting Application");
+                    Application.Quit();
+                }
+                
                 print("Next Scenario");
-                RunCount = 0;
+                RunIndex = 1;
                 FirstScenario = false;
 
                 var sceneIndex = SceneManager.GetActiveScene().buildIndex;

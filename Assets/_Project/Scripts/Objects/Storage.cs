@@ -67,7 +67,7 @@ namespace stuartmillman.dissertation
             GUIStyle style = new GUIStyle();
             style.normal.textColor = Color.magenta;
 
-            GUILayout.BeginVertical("Storage");
+            GUILayout.BeginVertical();
             GUILayout.Label("Storage Contents", style);
             if (_items.Count == 0)
             {
