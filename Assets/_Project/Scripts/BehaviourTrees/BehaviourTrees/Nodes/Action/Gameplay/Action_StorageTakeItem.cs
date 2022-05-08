@@ -37,6 +37,8 @@ namespace stuartmillman.dissertation.bt
             {
                 if (_storage.IsInteractionComplete && _storage.User == agent.gameObject)
                 {
+                    _storage.ResetInteraction();
+                    
                     _storage.RemoveFromStorage(_itemName, _itemAmount);
                     agent.Inventory.Add(_itemName, _itemAmount);
                     return NodeState.Success;

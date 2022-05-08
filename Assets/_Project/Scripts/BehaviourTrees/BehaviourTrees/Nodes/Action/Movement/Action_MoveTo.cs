@@ -23,6 +23,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            agent.name = agent.OriginalAgentName + " [Action_MoveTo]";
+            
             if (agent.AtDestination())
                 return NodeState.Success;
 

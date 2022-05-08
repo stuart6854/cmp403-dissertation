@@ -35,6 +35,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            agent.name = agent.OriginalAgentName + " [Action_CraftItem]";
+
             if (!_craftingBench.IsInteracting)
             {
                 _craftingBench.Interact(agent.gameObject);
@@ -43,6 +45,8 @@ namespace stuartmillman.dissertation.bt
             {
                 if (_craftingBench.IsInteractionComplete && _craftingBench.User == agent.gameObject)
                 {
+                    _craftingBench.ResetInteraction();
+                    
                     for (int i = 0; i < _requiredItemNames.Length; i++)
                     {
                         agent.Inventory.Remove(_requiredItemNames[i], _requiredItemAmounts[i]);

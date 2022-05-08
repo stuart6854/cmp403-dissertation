@@ -24,6 +24,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            agent.name = agent.OriginalAgentName + " [Action_FindFarmLandWithCrop]";
+
             var farmlands = Object.FindObjectsOfType<FarmLand>();
 
             if (farmlands != null)

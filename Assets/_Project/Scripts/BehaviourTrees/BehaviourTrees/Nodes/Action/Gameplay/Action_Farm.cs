@@ -29,6 +29,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            agent.name = agent.OriginalAgentName + " [Action_Farm]";
+
             if (!_farmLand.IsInteracting && !_farmLand.IsInteractionComplete)
             {
                 _farmLand.Interact(agent.gameObject);

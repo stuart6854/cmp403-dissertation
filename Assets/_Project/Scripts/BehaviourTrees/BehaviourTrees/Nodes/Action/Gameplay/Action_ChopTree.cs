@@ -25,6 +25,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            agent.name = agent.OriginalAgentName + " [ChopTree]";
+
             // if (_tree == null)
             //     return NodeState.Failure;
 

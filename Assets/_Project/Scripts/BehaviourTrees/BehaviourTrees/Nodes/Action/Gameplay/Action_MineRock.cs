@@ -25,6 +25,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            agent.name = agent.OriginalAgentName + " [Action_MineRock]";
+
             if (!_rock.IsInteracting)
             {
                 _rock.Interact(agent.gameObject);

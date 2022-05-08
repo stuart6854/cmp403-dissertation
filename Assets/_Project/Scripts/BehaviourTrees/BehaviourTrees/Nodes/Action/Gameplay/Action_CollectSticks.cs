@@ -25,6 +25,8 @@ namespace stuartmillman.dissertation.bt
 
         protected override NodeState OnUpdate(BTAgent agent, Blackboard blackboard)
         {
+            agent.name = agent.OriginalAgentName + " [Action_CollectSticks]";
+
             if (!_sticks.IsInteracting)
             {
                 _sticks.Interact(agent.gameObject);
