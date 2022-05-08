@@ -35,6 +35,16 @@ namespace stuartmillman.dissertation
 
         private void Update()
         {
+            var trees = FindObjectsOfType<Tree>();
+            if (trees == null || trees.Length == 0)
+                SetNoTrees();
+            var rocks = FindObjectsOfType<Rock>();
+            if (rocks == null || rocks.Length == 0)
+                SetNoRocks();
+            var sticks = FindObjectsOfType<Sticks>();
+            if (sticks == null || sticks.Length == 0)
+                SetNoSticks();
+
             if (!_isComplete && _noTrees && _noRocks && _noSticks)
             {
                 _isComplete = true;
